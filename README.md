@@ -25,9 +25,20 @@ i.v.m. MSTest:
 i.v.m. Files en Directories:
 
 - Wat is het voordeel van `Path.Combine` i.v.m. strings aan elkaar plakken?
+
+> Je moet geen special character zelf typen
+
 - Wordt de return-waarde van `Directory.CreateDirectory(...)` steeds opgevangen? (TIP: gebruik `CTRL-SHIFT-F`)
+
+> Nee, het wordt direct uitgevoerd
+
 - Wat is de return-waarde van `Directory.CreateDirectory(...)`?
+
+> een object
+
 - Wanneer is het nuttig om de return-waarde van `Directory.CreateDirectory(...)` op te vangen?
+
+> wanneer je de directory wilt verwijderen
 
 i.v.m. duidelijkheid/geschiedenis van de code:
 
