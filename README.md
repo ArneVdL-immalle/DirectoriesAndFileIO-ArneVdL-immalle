@@ -43,8 +43,17 @@ i.v.m. Files en Directories:
 i.v.m. duidelijkheid/geschiedenis van de code:
 
 - Lukken de testen in de commit 3ffe2c86? Waarom (niet)?
+
+> nee, doordat de parameters niet kloppen.
+
 - Wat lost commit d0320b6a op?
+
+> door expected en assert om te draaien
+
 - Wat is het probleem met de files in commit 9d184949?
+
+> Er is geen search pattern toegevoegd
+
 - Wat doet commit 9b3e4065? Maakt dit de code makkelijker leesbaar? Makkelijker uitbreidbaar?
 
-
+> test files, ja, want je kan het beter uitbreiden doordat alles bij elkaar staat voor één test
