@@ -36,6 +36,22 @@ namespace DirectoriesAndFileIO
             dir.Refresh(); // only here we actually delete, otherwise use Directory.Delete("testDir");
 
             Assert.IsFalse(dir.Exists, "Directory should be deleted");
-        }        
+        }
+
+        [TestMethod]
+        public void TestCreateAndDeleteDirectoryDirectly()
+        {
+            // In stead of using a DirectoryInfo-object,
+            // we can use the static methods of the Directory-class directly.
+            string dirName = "testDir";
+            Directory.CreateDirectory(dirName); // we don't care about the return value here
+
+            Assert.IsTrue(Directory.Exists(dirName), "Directory should exist");
+
+            Directory.Delete(dirName);
+
+            Assert.IsFalse(Directory.Exists(dirName), "Directory should be deleted");
+        }
+
     }
 }
