@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using System.Text;
 
 namespace DirectoriesAndFileIO
 {
     [TestClass]
-    public class TestReadFiles
+    public class TestWriteFiles
     {
         string testDir = "";
         string fileA = "";
@@ -46,92 +49,34 @@ namespace DirectoriesAndFileIO
         }
 
         [TestMethod]
-        public void TestFileReadAllText()
+        public void TestFileWriteAllText()
         {
+            File.WriteAllText(fileA, fileAContents);
             string txt = File.ReadAllText(fileA);
             Assert.AreEqual(fileAContents, txt);
 
+            File.WriteAllText(fileB, fileBContents);
             string txt2 = File.ReadAllText(fileB);
             Assert.AreEqual(fileBContents, txt2);
         }
 
         [TestMethod]
-        public void TestReadAllLines()
+        public void TestWriteAllLines()
         {
+            File.WriteAllLines(fileA, fileAContents.Split('\n'));
+
             string[] lines = File.ReadAllLines(fileA);
 
             Assert.AreEqual(1, lines.Length);
             Assert.AreEqual(fileAContents, lines[0]);
 
+            File.WriteAllLines(fileB, fileBContents.Split('\n'));
+
             string[] lines2 = File.ReadAllLines(fileB);
 
             Assert.AreEqual(2, lines2.Length);
-            String line = lines2[0] + "\n"+ lines2[1];
+            String line = lines2[0] + "\n" + lines2[1];
             Assert.AreEqual(fileBContents, line);
         }
-
-        [TestMethod]
-        public void TestFileOpenText()
-        {
-            string path = @"D:\6ITN\Arne Van den Langenbergh\SOFTW\DirectoriesAndFileIO\DirectoriesAndFileIO\bin\Debug\MyTest.txt";
-
-            if (!File.Exists(path))
-            {
-                // Create the file.
-                using (FileStream fs = File.Create(path))
-                {
-                    Byte[] info =
-                        new UTF8Encoding(true).GetBytes("is some text in the file.");
-
-                    // Add some information to the file.
-                    fs.Write(info, 0, info.Length);
-                }
-            }
-
-            // Open the stream and read it back.
-            using (StreamReader sr = File.OpenText(path))
-            {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(s);
-                }
-            }
-        }        
-
-        [TestMethod]
-        public void TestStreamReader()
-        {
-            StreamReader s = new StreamReader(fileA);
-
-            string txt = s.ReadToEnd();
-            Assert.AreEqual(fileAContents, txt);
-
-            s.Close();
-        }
-
-        [TestMethod]
-        public void TestFileStream()
-        {
-            byte[] data = new byte[20];
-
-            FileStream stream = File.OpenRead(fileA);
-            int r = stream.Read(data, 0, 20);
-
-            string txt = "";
-            foreach(byte b in data)
-            {
-                if(b != 0)
-                {
-                    txt += (char)b;
-                }
-            }
-
-            Assert.AreEqual(fileAContents.Length, r);
-            Assert.AreEqual(fileAContents, txt);
-
-            stream.Close();
-        }
-
     }
 }

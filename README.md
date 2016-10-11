@@ -67,6 +67,8 @@ Voeg aan `TestReadFiles` een nieuwe test toe die handelt over `File.OpenText`.
 - noem de test `TestFileOpenText`
 - test enkele nuttige dingen
 
+> gedaan
+
 # Opdracht 2 : TestReadFiles verbeteren
 
 Momenteel gebruikt `TestReadFiles` de `fileB` nog niet echt nuttig.
@@ -77,6 +79,7 @@ tests ook `fileB` gebruiken om extra tests uit te voeren:
 - `TestReadAllText`
 - `TestReadAllLines`
 
+> gedaan
 
 # Opdracht 3 : TestWriteFiles
 
@@ -96,4 +99,4 @@ Gebruik zeker :
 Maak voor elke van voorgaande tests ook een variant die **Append** doet i.p.v.
 **Replace**.
 
-
+> gedaan
