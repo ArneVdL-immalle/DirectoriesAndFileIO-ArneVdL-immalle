@@ -41,7 +41,7 @@ namespace DirectoriesAndFileIO
         {
             if (Directory.Exists(testDir))
             {
-                Directory.Delete(testDir, true);
+                Directory.Delete(testDir, recursive: true);
             }
         }
 
@@ -113,15 +113,15 @@ namespace DirectoriesAndFileIO
         [TestMethod]
         public void TestFileStream()
         {
-            byte[] data = new byte[20];
+            byte[] data = new byte[20]; // we choose 20 bytes because that's more than enough for what we choose as fileAContents, all bytes will be initialized to 0
 
             FileStream stream = File.OpenRead(fileA);
-            int r = stream.Read(data, 0, 20);
+            int r = stream.Read(data, 0, 20); // we read 20 bytes or less if the stream is finished
 
             string txt = "";
             foreach(byte b in data)
             {
-                if(b != 0)
+                if(b != 0) // the last bytes of the array will still be 0
                 {
                     txt += (char)b;
                 }
